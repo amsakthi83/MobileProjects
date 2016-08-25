@@ -51,9 +51,7 @@
  chat_form.on("submit", function(){
 
    // Send the message to the server
-   socket.emit("sendMessage",$('#recipient').val(), {
-    "content": $(this).find("textarea").val()
-   });
+   socket.emit("sendMessage",$('#recipient').val(), $(this).find("textarea").val());
 
    // Empty the form
    $(this).find("input:first, textarea").val('');
@@ -61,10 +59,11 @@
  });
 
  // Whenever we receieve a message, append it to the <ul>
- socket.on("messageReceived", function(data){
+ socket.on("messageReceived", function(data,msg){
    console.log(data);
   $("#messages").append($("<li>", {
-    "text": data.content
+    "who": data,
+    "msg": msg
   }));
  });
  socket.on("login_successful", function(data){
