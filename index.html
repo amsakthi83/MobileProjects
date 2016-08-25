@@ -67,6 +67,13 @@
     "text": data.content
   }));
  });
+ socket.on("login_successful", function(data){
+ console.log(data);
+ });
+ login_error
+  socket.on("login_error", function(data){
+ console.log(data);
+ });
 </script>
 </body>
 </html>
