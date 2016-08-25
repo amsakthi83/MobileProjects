@@ -61,10 +61,7 @@
  // Whenever we receieve a message, append it to the <ul>
  socket.on("messageReceived", function(data,msg){
    console.log(data);
-  $("#messages").append($("<li>", {
-    "who": data,
-    "msg": msg
-  }));
+  $("#messages").append("<li>"+data+":"+msg+"</li>");
  });
  socket.on("login_successful", function(data){
  console.log(data);
