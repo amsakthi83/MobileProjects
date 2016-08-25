@@ -51,8 +51,7 @@
  chat_form.on("submit", function(){
 
    // Send the message to the server
-   socket.emit("sendMessage", {
-    "username": $(this).find("input:first").val(),
+   socket.emit("sendMessage",$('#recipient').val(), {
     "content": $(this).find("textarea").val()
    });
 
@@ -63,6 +62,7 @@
 
  // Whenever we receieve a message, append it to the <ul>
  socket.on("messageReceived", function(data){
+   console.log(data);
   $("#messages").append($("<li>", {
     "text": data.content
   }));
